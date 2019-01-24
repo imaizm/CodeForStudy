@@ -1,0 +1,9 @@
+version: '2'
+services:
+  app:
+    build: .
+    image: example/demo:0.0.1
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
