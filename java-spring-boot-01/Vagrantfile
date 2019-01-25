@@ -1,0 +1,31 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+	config.vm.box = "donrwalsh/java-api"
+
+	config.vm.network :private_network, ip:"192.168.33.10"
+	config.vm.hostname = "localhost"
+
+	config.vm.provider "virtualbox" do |vb|
+		vb.memory = "1024"
+	end
+
+	config.vm.network :forwarded_port, guest: 8080, host: 8080 # http
+
+	config.vm.synced_folder ".", "/vagrant",
+        :create => true, :owner => 'vagrant', :group => 'vagrant',
+        :mount_options => ['dmode=777', 'fmode=600']
+
+#	config.ssh.forward_x11 = true
+
+	config.vm.provision :shell, :inline => <<-PREPARE
+
+        	git clone https://github.com/imaizm/CodeForStudy.git
+		cd CodeForStudy/java-spring-boot-01
+		./gradlew build
+		docker-compose up --build
+
+	PREPARE
+
+end

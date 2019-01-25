@@ -3,6 +3,8 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 
+.vagrant
+
 ### STS ###
 .apt_generated
 .classpath

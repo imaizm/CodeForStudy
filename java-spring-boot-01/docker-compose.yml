@@ -2,7 +2,7 @@ version: '2'
 services:
   app:
     build: .
-    image: example/demo:0.0.1
+    image: com-example/demo:1.0
     ports:
       - "8080:8080"
     volumes:
