@@ -1,0 +1,17 @@
+version: '2'
+services:
+  dbserver:
+    image: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - mysql-db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: sboot
+      MYSQL_PASSWORD: sboot
+      MYSQL_ROOT_PASSWORD: root
+volumes:
+  mysql-db:
+    driver: local
