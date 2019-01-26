@@ -25,7 +25,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         git clone https://github.com/imaizm/CodeForStudy.git
 		cd CodeForStudy/java-spring-boot-02
-		./gradlew build -x test
 		docker-compose up --build
 
 	PREPARE
