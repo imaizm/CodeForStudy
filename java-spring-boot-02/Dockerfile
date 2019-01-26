@@ -4,7 +4,7 @@ VOLUME /tmp
 RUN mkdir /app
 WORKDIR /app
 RUN git clone https://github.com/imaizm/CodeForStudy.git
-WORKDIR CodeForStudy
+WORKDIR CodeForStudy/java-spring-boot-02
 RUN ./gradlew build
 ENV JAVA_OPTS=""
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar build/libs/demo-1.0.jar" ]
