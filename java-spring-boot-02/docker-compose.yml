@@ -1,17 +1,28 @@
 version: '2'
 services:
-  dbserver:
+  docker-mysql:
     image: mysql:5.7
     ports:
       - "3306:3306"
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
-      - mysql-db:/var/lib/mysql
+      - docker-volume-mysql:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: mydb
-      MYSQL_USER: sboot
-      MYSQL_PASSWORD: sboot
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: app-user
+      MYSQL_PASSWORD: app-pass
+      MYSQL_ROOT_PASSWORD: root-pass
+  docker-phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.8
+    depends_on:
+      - docker-mysql
+    ports:
+      - "8081:80"
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: docker-mysql
+      PMA_USER: root
+      PMA_PASSWORD: root-pass
 volumes:
-  mysql-db:
+  docker-volume-mysql:
     driver: local
