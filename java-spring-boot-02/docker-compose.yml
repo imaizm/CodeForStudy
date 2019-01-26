@@ -23,6 +23,11 @@ services:
       PMA_HOST: docker-mysql
       PMA_USER: root
       PMA_PASSWORD: root-pass
+  docker-app:
+    build: .
+    image: com-example/demo:1.0
+    ports:
+      - "8080:8080"
 volumes:
   docker-volume-mysql:
     driver: local
