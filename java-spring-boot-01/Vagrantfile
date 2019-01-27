@@ -21,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 	config.vm.provision :shell, :inline => <<-PREPARE
 
-        	git clone https://github.com/imaizm/CodeForStudy.git
+        git clone https://github.com/imaizm/CodeForStudy.git
 		cd CodeForStudy/java-spring-boot-01
 		./gradlew build
 		docker-compose up --build
