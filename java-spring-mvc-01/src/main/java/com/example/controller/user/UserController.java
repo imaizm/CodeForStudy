@@ -15,6 +15,6 @@ public class UserController {
 	
 	@RequestMapping(value="/reissue", method=RequestMethod.GET)
 	public String goToReissue() {
-		return "user/userReissue";
+		return "user/reissuePassword";
 	}
 }
