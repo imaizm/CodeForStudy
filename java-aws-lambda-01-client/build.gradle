@@ -1,0 +1,13 @@
+apply plugin: 'java'
+
+group = 'com.example'
+version = '1.0'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation group: 'com.amazonaws', name: 'aws-java-sdk-lambda', version: '1.11.491'
+}
